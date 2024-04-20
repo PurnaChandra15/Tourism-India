@@ -32,4 +32,30 @@ header, main {
     padding: 20px;
 }
 
+/* styles.css */
+
+/* Define keyframes for the moving animation */
+@keyframes moveBackground {
+    0% {
+        background-position: 0% 50%; /* Start position */
+    }
+    100% {
+        background-position: 100% 50%; /* End position */
+    }
+}
+
+/* Apply the animation to the header */
+.bg-primary-transparent {
+    background: linear-gradient(90deg, #ff9933 0%, #ff9933 33%, #fff 33%, #fff 66%, #138808 66%, #138808 100%); /* Indian flag colors */
+    background-size: 600% 600%; /* Size of the background gradient */
+    animation: moveBackground 10s ease infinite; /* Apply animation */
+}
+
+/* Adjustments for other elements */
+.jumbotron {
+    background-color: rgba(128, 128, 128, 0.5); /* Transparent gray background */
+    border-radius: 10px; /* Add some border radius for style */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a subtle shadow for depth */
+}
+
 

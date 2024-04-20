@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="bg-primary text-white py-4">
+        <div class="container">
+            <h1 class="mb-0">Reviews</h1>
+        </div>
+    </header>
+
+    <main class="container mt-4">
+        <form id="addReviewForm" class="mb-4">
+            <div class="form-group">
+                <label for="reviewTitle">Title:</label>
+                <input type="text" class="form-control" id="reviewTitle" required>
+            </div>
+            <div class="form-group">
+                <label for="reviewContent">Content:</label>
+                <textarea class="form-control" id="reviewContent" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Review</button>
+        </form>
+        
+        <ul id="reviewsList" class="list-group">
+            <!-- Reviews will be dynamically added here -->
+        </ul>
+    </main>
+
+    <footer class="bg-dark text-white py-3 mt-5">
+        <div class="container">
+            <p class="text-center">&copy; 2024 Reviews</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="reviews.js"></script>
+</body>
+</html>

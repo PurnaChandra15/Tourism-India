@@ -1,0 +1,35 @@
+/* styles.css */
+
+/* styles.css */
+
+/* Transparent background for header */
+.bg-primary-transparent {
+    background-color: rgba(0, 123, 255, 0.5); /* Transparent blue background */
+}
+
+.jumbotron {
+    background-color: rgba(128, 128, 128, 0.5); /* Transparent gray background */
+}
+
+/* Adjust text color for better visibility on transparent background */
+.jumbotron h2,
+.jumbotron p {
+    color: #fff; /* White text color */
+}
+
+/* Adjustments for header buttons */
+.btn {
+    font-size: 16px;
+}
+
+/* Centered alignment for the dropdown and search section */
+.jumbotron {
+    text-align: center;
+}
+
+/* Adjustments for header and main sections */
+header, main {
+    padding: 20px;
+}
+
+

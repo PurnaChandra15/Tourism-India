@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Famous Places in India</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="bg-primary-transparent text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <h1 class="mb-0">Explore India</h1>
+                </div>
+                <div class="col-md-8 text-right">
+                    <button class="btn btn-light mr-2">Home</button>
+                    <button class="btn btn-primary mr-2">Destinations</button> <!-- Highlighted button for destinations -->
+                    <button class="btn btn-light mr-2">Cuisine</button>
+                    <a href="about.html" class="btn btn-light">About Us</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+	
+<!-- destinations.html -->
+
+<section id="destinations" class="container">
+    <h2 class="text-center mb-4">Famous Places in <span id="stateName"></span></h2>
+    <div id="stateImageContainer" class="text-center mb-4">
+        <img id="stateImage" src="" alt="State Image" class="img-fluid rounded">
+    </div>
+    <div id="placesList" class="row">
+        <!-- Famous places for the selected state will be dynamically added here -->
+    </div>
+</section>
+
+    </main>
+
+    <footer class="bg-dark text-white py-3 mt-5">
+        <div class="container">
+            <p class="text-center">&copy; 2024 Explore India</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="destinations.js"></script>
+</body>
+</html>

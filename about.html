@@ -6,6 +6,29 @@
     <title>About Us</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Custom CSS */
+        .team-member {
+            width: 100%;
+            padding: 10px;
+        }
+        .team-member img {
+            width: 100%;
+            max-width: 200px; /* Adjust the max-width as needed */
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 50%;
+        }
+        .team-member h5 {
+            margin-top: 15px;
+            text-align: center;
+        }
+        .team-member p {
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <header class="bg-primary-transparent text-white py-4">
@@ -24,31 +47,37 @@
         </div>
     </header>
     <main>
-        <section id="teamMembers">
-            <h2>Our Team</h2>
-            <ul>
-                <li>
-                    <img src="john_doe.jpg" alt="John Doe">
-                    Purna Chandra Shekar Reddy Gosala
-                </li>
-                <li>
-                    <img src="jane_smith.jpg" alt="Jane Smith">
-                    Shyam Rishi Kashyap
-                </li>
-                <!-- Add more team members and their roles -->
-            </ul>
+        <section id="teamMembers" class="container">
+            <h2 class="text-center mb-4">Our Team</h2>
+            <div class="row">
+                <div class="col-md-3 team-member">
+                    <img src="img/purna.jpg" alt="Purna Chandra Shekar Reddy Gosala">
+                    <h5>Purna Chandra Shekar Reddy Gosala</h5>
+                    <p>Designed the user interface and implemented front-end functionality.</p>
+                </div>
+                <div class="col-md-3 team-member">
+                    <img src="img/shyam.jpg" alt="Shyam Rishi Kashyap Sai Kalaparthy">
+                    <h5>Shyam Rishi Kashyap Sai Kalaparthy</h5>
+                    <p>Developed the back-end functionality and integrated APIs.</p>
+                </div>
+                <div class="col-md-3 team-member">
+                    <img src="img/advith.jpg" alt="Advith Reddy Kunda">
+                    <h5>Advith Reddy Kunda</h5>
+                    <p>Designed the user interface and implemented front-end functionality.</p>
+                </div>
+                <div class="col-md-3 team-member">
+                    <img src="img/pragyna.jpg" alt="Pragnya Devi">
+                    <h5>Pragyna Devi</h5>
+                    <p>Developed the back-end functionality and integrated APIs.</p>
+                </div>
+            </div>
         </section>
 
-        <section id="contributions">
-            <h2>Contributions</h2>
-            <p>Purna Chandra Shekar Reddy Gosala: Designed the user interface and implemented front-end functionality.</p>
-            <p>Shyam Rishi Kashyap: Developed the back-end functionality and integrated APIs.</p>
-            <!-- Add contributions of other team members -->
-        </section>
+        <footer class="bg-dark text-white py-3 mt-5">
+            <div class="container">
+                <p class="text-center">&copy; About Us</p>
+            </div>
+        </footer>
     </main>
-
-    <footer>
-        <p>&copy; 2024 Interactive Itinerary Planner</p>
-    </footer>
 </body>
 </html>

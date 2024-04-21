@@ -1,7 +1,5 @@
 /* styles.css */
 
-/* styles.css */
-
 /* Transparent background for header */
 .bg-primary-transparent {
     background-color: rgba(0, 123, 255, 0.5); /* Transparent blue background */
@@ -32,8 +30,6 @@ header, main {
     padding: 20px;
 }
 
-/* styles.css */
-
 /* Define keyframes for the moving animation */
 @keyframes moveBackground {
     0% {
@@ -58,16 +54,71 @@ header, main {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a subtle shadow for depth */
 }
 
-/* Adjust the footer styling */
+/* Transparent background for footer */
 footer {
-    background-color: rgba(0, 0, 0, 0.5); /* Transparent dark gray background */
-    color: rgba(255, 255, 255, 0.8); /* Semi-transparent white text */
     position: fixed; /* Fixed positioning */
     bottom: 0; /* Position at the bottom of the viewport */
     width: 100%; /* Full width */
-    padding: 10px 0; /* Add some padding */
-    text-align: center; /* Center-align the text */
-    z-index: 9999; /* Set a high z-index to ensure it appears above other content */
+    background-color: rgba(0, 0, 0, 0.5); /* Transparent black background */
 }
 
+/* Adjust text color for better visibility on transparent background */
+footer p {
+    color: rgba(255, 255, 255, 0.8); /* Semi-transparent white text */
+    text-align: center; /* Center-align the text */
+    margin-bottom: 0; /* Remove default margin */
+    padding: 5px 0; /* Add padding */
+}
 
+/* Style for the state name */
+#stateName {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Style for the state image */
+#stateImage {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+//* styles.css */
+
+/* Style for the famous places blocks */
+.card {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.card-img-top {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 16px;
+}
+
+/* Adjust layout for famous places in one row */
+@media (min-width: 768px) {
+    .card {
+        flex: 0 0 calc(33.333% - 20px); /* Adjust width for three items in one row */
+        max-width: calc(33.333% - 20px);
+        margin-right: 20px; /* Add margin between items */
+    }
+    .card:last-child {
+        margin-right: 0; /* Remove margin for last item in the row */
+    }
+}

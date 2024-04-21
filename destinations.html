@@ -15,36 +15,32 @@
                     <h1 class="mb-0">Explore India</h1>
                 </div>
                 <div class="col-md-8 text-right">
-                    <button class="btn btn-light mr-2">Home</button>
-                    <button class="btn btn-primary mr-2">Destinations</button> <!-- Highlighted button for destinations -->
-                    <button class="btn btn-light mr-2">Cuisine</button>
-                    <a href="about.html" class="btn btn-light">About Us</a>
+                    <button id="homeButton" class="btn btn-light mr-2" onclick="window.location.href='index.html'">Home</button>
+                    <button id="destinationsButton" class="btn btn-primary mr-2">Destinations</button>
+                    <button id="reviewsButton" class="btn btn-light mr-2" onclick="window.location.href='reviews.html'">Reviews</button>
+                    <button class="btn btn-light" onclick="window.location.href='about.html'">About Us</button>
                 </div>
             </div>
         </div>
     </header>
 
     <main>
-	
-<!-- destinations.html -->
-
-<section id="destinations" class="container">
-    <h2 class="text-center mb-4">Famous Places in <span id="stateName"></span></h2>
-    <div id="stateImageContainer" class="text-center mb-4">
-        <img id="stateImage" src="" alt="State Image" class="img-fluid rounded">
-    </div>
-    <div id="placesList" class="row">
-        <!-- Famous places for the selected state will be dynamically added here -->
-    </div>
-</section>
-
+        <section id="destinations" class="container">
+            <h2 class="text-center mb-4" id="stateName">Famous Places in <span id="stateName"></span></h2>
+            <div id="stateImageContainer" class="text-center mb-4">
+                <img id="stateImage" src="" alt="State Image" class="img-fluid rounded">
+            </div>
+            <div id="placesList" class="row">
+                <!-- Famous places for the selected state will be dynamically added here -->
+            </div>
+        </section>
     </main>
 
-    <footer class="bg-dark text-white py-3 mt-5">
+    <!--<footer class="bg-dark text-white py-3 mt-5">
         <div class="container">
             <p class="text-center">&copy; 2024 Explore India</p>
         </div>
-    </footer>
+    </footer> -->
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

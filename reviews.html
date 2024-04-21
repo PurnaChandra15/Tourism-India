@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="bg-primary-transparent text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <h1 class="mb-0">Explore India</h1>
+                </div>
+                <div class="col-md-8 text-right">
+                    <button id="homeButton" class="btn btn-light mr-2">Home</button>
+                    <button id="destinationsButton" class="btn btn-light mr-2">Destinations</button>
+                    <a href="reviews.html" class="btn btn-primary">Reviews</a>
+                    <a href="about.html" class="btn btn-light">About Us</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>States</h2>
+                    <select id="stateSelect" class="form-control mb-3">
+                        <option value="">Select state</option>
+                        <!-- Options will be dynamically added here -->
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <h2>Famous Places</h2>
+                    <select id="placeSelect" class="form-control mb-3">
+                        <option value="">Select state first</option>
+                        <!-- Options will be dynamically added here based on the selected state -->
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Reviews</h2>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Modified By</th>
+                                <th>Rating</th>
+                                <th>Experience</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reviewsTableBody">
+                            <!-- Reviews will be dynamically added here -->
+                        </tbody>
+                    </table>
+                    <h2>Add Review</h2>
+                    <form id="addReviewForm" class="mt-4">
+                        <div class="form-group">
+                            <label for="modifiedBy">Modified By:</label>
+                            <input type="text" class="form-control" id="modifiedBy" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rating">Rating:</label>
+                            <input type="number" class="form-control" id="rating" min="1" max="5" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="experience">Experience:</label>
+                            <textarea class="form-control" id="experience" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Review</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p class="text-white">&copy; 2024 Reviews</p>
+        </div>
+    </footer>
+    
+    <script src="destinations.js"></script>
+    <script src="reviews.js"></script>
+    <script src="states.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const homeButton = document.getElementById('homeButton');
+    homeButton.addEventListener('click', function() {
+        window.location.href = 'index.html'; // Navigate to the home page
+    });
+
+    const stateSelect = document.getElementById('stateSelect');
+    states.forEach(state => {
+        const option = document.createElement('option');
+        option.textContent = state;
+        stateSelect.appendChild(option);
+    });
+
+    stateSelect.addEventListener('change', function() {
+        const selectedState = this.value;
+        const placeSelect = document.getElementById('placeSelect');
+        placeSelect.innerHTML = '';
+        if (selectedState === '') {
+            const option = document.createElement('option');
+            option.textContent = 'Select state first';
+            placeSelect.appendChild(option);
+        } else {
+            const stateData = famousPlaces.find(place => place.state === selectedState);
+            if (stateData) {
+                stateData.places.forEach(place => {
+                    const option = document.createElement('option');
+                    option.textContent = place.name;
+                    placeSelect.appendChild(option);
+                });
+            }
+        }
+    });
+
+    document.getElementById('addReviewForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const modifiedBy = document.getElementById('modifiedBy').value;
+        const rating = document.getElementById('rating').value;
+        const experience = document.getElementById('experience').value;
+        const state = document.getElementById('stateSelect').value;
+        const place = document.getElementById('placeSelect').value;
+        addReview({ modifiedBy, rating, experience, state, place });
+        document.getElementById('modifiedBy').value = '';
+        document.getElementById('rating').value = '';
+        document.getElementById('experience').value = '';
+        displayReviews(reviews); // Update the displayed reviews after adding a new one
+    });
+
+    // Function to display reviews in the table
+    function displayReviews(reviews) {
+        const reviewsTableBody = document.getElementById('reviewsTableBody');
+        reviewsTableBody.innerHTML = '';
+        reviews.forEach(review => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${review.modifiedBy}</td>
+                <td>${review.rating}</td>
+                <td>${review.experience}</td>
+            `;
+            reviewsTableBody.appendChild(row);
+        });
+    }
+
+    // Function to add a review to the reviews array
+    function addReview(review) {
+        reviews.push(review); // Add the review to the global reviews array
+    }
+
+    // Assuming the reviews array is initialized elsewhere or fetched from a database
+    // let reviews = []; // Initialize the global reviews array
+    // Fetch and display initial reviews
+    // displayReviews(reviews);
+});
+
+    </script>
+</body>
+</html>

@@ -1,33 +1,36 @@
 // Array of states in India
 var states = [
-    "Andhra Pradesh",
-    "Arunachal Pradesh",
+    "AndhraPradesh",
+    "ArunachalPradesh",
     "Assam",
     "Bihar",
     "Chhattisgarh",
     "Goa",
     "Gujarat",
     "Haryana",
-    "Himachal Pradesh",
+    "HimachalPradesh",
+	"JammuKashmir",
     "Jharkhand",
     "Karnataka",
     "Kerala",
-    "Madhya Pradesh",
+	"Ladakh",
+    "MadhyaPradesh",
     "Maharashtra",
     "Manipur",
     "Meghalaya",
     "Mizoram",
     "Nagaland",
+	"NewDelhi",
     "Odisha",
     "Punjab",
     "Rajasthan",
     "Sikkim",
-    "Tamil Nadu",
+    "TamilNadu",
     "Telangana",
     "Tripura",
-    "Uttar Pradesh",
+    "UttarPradesh",
     "Uttarakhand",
-    "West Bengal"
+    "WestBengal"
 ];
 
 // Function to populate the select element with options for states
@@ -42,4 +45,4 @@ function populateStates() {
 }
 
 // Populate the select element when the page loads
-window.onload = populateStates;
+window.onload = populateStates;

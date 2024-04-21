@@ -4,33 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>About Us</h1>
+    <header class="bg-primary-transparent text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <h1 class="mb-0">Explore India</h1>
+                </div>
+                <div class="col-md-8 text-right">
+                    <button id="homeButton" class="btn btn-light mr-2" onclick="window.location.href='index.html'">Home</button>
+                    <button id="destinationsButton" class="btn btn-light mr-2">Destinations</button>
+                    <button id="reviewsButton" class="btn btn-light mr-2" onclick="window.location.href='reviews.html'">Reviews</button>
+                    <button class="btn btn-primary" onclick="window.location.href='about.html'">About Us</button>
+                </div>
+            </div>
+        </div>
     </header>
-
     <main>
         <section id="teamMembers">
             <h2>Our Team</h2>
             <ul>
                 <li>
-                    <img src="john_doe.jpg" alt="">
+                    <img src="john_doe.jpg" alt="John Doe">
                     Purna Chandra Shekar Reddy Gosala
                 </li>
                 <li>
-                    <img src="jane_smith.jpg" alt="">
+                    <img src="jane_smith.jpg" alt="Jane Smith">
                     Shyam Rishi Kashyap
                 </li>
-                <li>
-                    <img src="john_doe.jpg" alt="">
-                    Advith Reddy Kunda
-                </li>
-                <li>
-                    <img src="jane_smith.jpg" alt="">
-                    Pragnya Devi
-                </li>
+                <!-- Add more team members and their roles -->
             </ul>
         </section>
 
@@ -38,13 +43,12 @@
             <h2>Contributions</h2>
             <p>Purna Chandra Shekar Reddy Gosala: Designed the user interface and implemented front-end functionality.</p>
             <p>Shyam Rishi Kashyap: Developed the back-end functionality and integrated APIs.</p>
-            <p>Advith Reddy Kunda: Led the database design and data integration efforts, ensuring robust data management and scalability.</p>
-            <p>Pragnya Devi: Managed project logistics, coordinated between teams, and oversaw the testing and quality assurance processes.</p>
+            <!-- Add contributions of other team members -->
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Interactive Destination Planner</p>
+        <p>&copy; 2024 Interactive Itinerary Planner</p>
     </footer>
 </body>
 </html>

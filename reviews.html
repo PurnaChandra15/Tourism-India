@@ -6,6 +6,25 @@
     <title>Reviews</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+
+        .transparent-black {
+            background-color: rgba(0, 0, 0, 0.7); /* Adjust transparency here */
+            color: white; /* Text color */
+            padding: 20px; /* Add padding for spacing */
+            height: 100vh; /* Make blocks occupy full height of viewport */
+        }
+        .card {
+            background-color: transparent; /* Remove card background color */
+            border: none; /* Remove card border */
+        }
+        .form-group {
+            margin-bottom: 20px; /* Increase margin between form elements */
+        }
+        .form-control {
+            width: 100%; /* Make input fields occupy full width */
+        }
+    </style>
 </head>
 <body>
     <header class="bg-primary-transparent text-white py-4">
@@ -25,142 +44,151 @@
     </header>
 
     <main>
-        <div class="container mt-4">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2>States</h2>
-                    <select id="stateSelect" class="form-control mb-3">
-                        <option value="">Select state</option>
-                        <!-- Options will be dynamically added here -->
-                    </select>
+        <div class="container-fluid">
+            <div class="row no-gutters">
+                <!-- Left block for adding review -->
+                <div class="col-md-6 transparent-black" style="padding-right: 40px;"> <!-- Increase padding on the right -->
+                    <section id="addReviewForm">
+                        <div class="card">
+                            <h2 class="text-center mb-4">Add a Review</h2>
+                            <form id="addReviewForm">
+                                <div class="form-group">
+                                    <label for="userName">Name:</label>
+                                    <input type="text" id="userName" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="stateSelect">State:</label>
+                                    <select id="stateSelect" class="form-control" required>
+                                        <option value="">Select State</option>
+                                        <!-- States will be dynamically added here -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="placeSelect">Famous Place:</label>
+                                    <select id="placeSelect" class="form-control" required>
+                                        <option value="">Select Famous Place</option>
+                                        <!-- Places will be dynamically added here based on the selected state -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="userReview">Review:</label>
+                                    <textarea id="userReview" class="form-control" rows="6" required></textarea> <!-- Increase rows -->
+                                </div>
+                                <div class="form-group">
+                                    <label for="starRating">Rating:</label>
+                                    <select id="starRating" class="form-control" required>
+                                        <option value="">Select Rating</option>
+                                        <option value="1">1 star</option>
+                                        <option value="2">2 stars</option>
+                                        <option value="3">3 stars</option>
+                                        <option value="4">4 stars</option>
+                                        <option value="5">5 stars</option>
+                                    </select>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">Submit Review</button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
                 </div>
-                <div class="col-md-6">
-                    <h2>Famous Places</h2>
-                    <select id="placeSelect" class="form-control mb-3">
-                        <option value="">Select state first</option>
-                        <!-- Options will be dynamically added here based on the selected state -->
-                    </select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <h2>Reviews</h2>
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Modified By</th>
-                                <th>Rating</th>
-                                <th>Experience</th>
-                            </tr>
-                        </thead>
-                        <tbody id="reviewsTableBody">
-                            <!-- Reviews will be dynamically added here -->
-                        </tbody>
-                    </table>
-                    <h2>Add Review</h2>
-                    <form id="addReviewForm" class="mt-4">
-                        <div class="form-group">
-                            <label for="modifiedBy">Modified By:</label>
-                            <input type="text" class="form-control" id="modifiedBy" required>
+                <!-- Right block for displaying reviews -->
+                <div class="col-md-6 transparent-black">
+                    <section id="reviewList">
+                        <div class="card">
+                            <h2 class="text-center mb-4">Reviews</h2>
+                            <ul id="reviews"></ul>
                         </div>
-                        <div class="form-group">
-                            <label for="rating">Rating:</label>
-                            <input type="number" class="form-control" id="rating" min="1" max="5" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="experience">Experience:</label>
-                            <textarea class="form-control" id="experience" rows="3" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Add Review</button>
-                    </form>
+                    </section>
                 </div>
             </div>
         </div>
     </main>
 
-    <footer>
-        <div class="container">
-            <p class="text-white">&copy; 2024 Reviews</p>
-        </div>
-    </footer>
-    
+    <script src="states.js"></script>
     <script src="destinations.js"></script>
     <script src="reviews.js"></script>
-    <script src="states.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-    const homeButton = document.getElementById('homeButton');
-    homeButton.addEventListener('click', function() {
-        window.location.href = 'index.html'; // Navigate to the home page
-    });
+            const stateSelect = document.getElementById('stateSelect');
+            states.forEach(state => {
+                const option = document.createElement('option');
+                option.textContent = state;
+                stateSelect.appendChild(option);
+            });
 
-    const stateSelect = document.getElementById('stateSelect');
-    states.forEach(state => {
-        const option = document.createElement('option');
-        option.textContent = state;
-        stateSelect.appendChild(option);
-    });
-
-    stateSelect.addEventListener('change', function() {
-        const selectedState = this.value;
-        const placeSelect = document.getElementById('placeSelect');
-        placeSelect.innerHTML = '';
-        if (selectedState === '') {
-            const option = document.createElement('option');
-            option.textContent = 'Select state first';
-            placeSelect.appendChild(option);
-        } else {
-            const stateData = famousPlaces.find(place => place.state === selectedState);
-            if (stateData) {
-                stateData.places.forEach(place => {
+            stateSelect.addEventListener('change', function() {
+                const selectedState = this.value;
+                const placeSelect = document.getElementById('placeSelect');
+                placeSelect.innerHTML = '';
+                if (selectedState === '') {
                     const option = document.createElement('option');
-                    option.textContent = place.name;
+                    option.textContent = 'Select state first';
                     placeSelect.appendChild(option);
+                } else {
+                    const stateData = famousPlaces.find(place => place.state === selectedState);
+                    if (stateData) {
+                        stateData.places.forEach(place => {
+                            const option = document.createElement('option');
+                            option.textContent = place.name;
+                            placeSelect.appendChild(option);
+                        });
+                    }
+                }
+            });
+
+            document.getElementById('addReviewForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+                const userName = document.getElementById('userName').value;
+                const state = document.getElementById('stateSelect').value;
+                const place = document.getElementById('placeSelect').value;
+                const userReview = document.getElementById('userReview').value;
+                const starRating = document.getElementById('starRating').value;
+                addReview({ userName, state, place, userReview, starRating });
+                document.getElementById('userName').value = '';
+                document.getElementById('stateSelect').value = '';
+                document.getElementById('placeSelect').value = '';
+                document.getElementById('userReview').value = '';
+                document.getElementById('starRating').value = '';
+                updateReviewsList();
+            });
+
+            // Function to update the reviews list
+            function updateReviewsList() {
+                const reviewsList = document.getElementById('reviews');
+                reviewsList.innerHTML = '';
+                reviews.forEach(function(review, index) {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${review.userName} (${review.state}, ${review.place}): ${review.userReview} (${review.starRating} stars)`;
+
+                    const editButton = document.createElement('button');
+                    editButton.textContent = 'Edit';
+                    editButton.classList.add('btn', 'btn-primary', 'mx-2');
+                    editButton.addEventListener('click', function() {
+                        const updatedName = prompt('Enter updated name:', review.userName);
+                        const updatedReview = prompt('Enter updated review:', review.userReview);
+                        const updatedRating = prompt('Enter updated rating (1-5):', review.starRating);
+
+                        if (updatedName && updatedReview && updatedRating) {
+                            reviews[index] = { userName: updatedName, state: review.state, place: review.place, userReview: updatedReview, starRating: updatedRating };
+                            updateReviewsList();
+                        }
+                    });
+
+                    const deleteButton = document.createElement('button');
+                    deleteButton.textContent = 'Delete';
+                    deleteButton.classList.add('btn', 'btn-danger');
+                    deleteButton.addEventListener('click', function() {
+                        reviews.splice(index, 1);
+                        updateReviewsList();
+                    });
+
+                    listItem.appendChild(editButton);
+                    listItem.appendChild(deleteButton);
+                    reviewsList.appendChild(listItem);
                 });
             }
-        }
-    });
-
-    document.getElementById('addReviewForm').addEventListener('submit', function (event) {
-        event.preventDefault();
-        const modifiedBy = document.getElementById('modifiedBy').value;
-        const rating = document.getElementById('rating').value;
-        const experience = document.getElementById('experience').value;
-        const state = document.getElementById('stateSelect').value;
-        const place = document.getElementById('placeSelect').value;
-        addReview({ modifiedBy, rating, experience, state, place });
-        document.getElementById('modifiedBy').value = '';
-        document.getElementById('rating').value = '';
-        document.getElementById('experience').value = '';
-        displayReviews(reviews); // Update the displayed reviews after adding a new one
-    });
-
-    // Function to display reviews in the table
-    function displayReviews(reviews) {
-        const reviewsTableBody = document.getElementById('reviewsTableBody');
-        reviewsTableBody.innerHTML = '';
-        reviews.forEach(review => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${review.modifiedBy}</td>
-                <td>${review.rating}</td>
-                <td>${review.experience}</td>
-            `;
-            reviewsTableBody.appendChild(row);
         });
-    }
-
-    // Function to add a review to the reviews array
-    function addReview(review) {
-        reviews.push(review); // Add the review to the global reviews array
-    }
-
-    // Assuming the reviews array is initialized elsewhere or fetched from a database
-    // let reviews = []; // Initialize the global reviews array
-    // Fetch and display initial reviews
-    // displayReviews(reviews);
-});
-
     </script>
 </body>
 </html>

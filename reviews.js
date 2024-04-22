@@ -5,8 +5,13 @@ let reviews = [];
 
 // Function to add a review
 function addReview(review) {
-    reviews.push(review);
+    reviews.push({ ...review, id: generateId() }); // Add a unique ID to each review
     console.log('Review added:', review);
+}
+
+// Function to generate a unique ID for each review
+function generateId() {
+    return '_' + Math.random().toString(36).substr(2, 9);
 }
 
 // Function to get reviews for a specific place
@@ -15,15 +20,27 @@ function getReviewsForPlace(state, placeName) {
 }
 
 // Function to edit a review
-function editReview(reviewId) {
-    console.log('Edit review with ID:', reviewId);
-    // Add your edit review logic here
+function editReview(reviewId, modifiedBy, rating, experience) {
+    const index = reviews.findIndex(review => review.id === reviewId);
+    if (index !== -1) {
+        reviews[index].modifiedBy = modifiedBy;
+        reviews[index].rating = rating;
+        reviews[index].experience = experience;
+        console.log('Review edited:', reviews[index]);
+    } else {
+        console.error('Review not found with ID:', reviewId);
+    }
 }
 
 // Function to delete a review
 function deleteReview(reviewId) {
-    console.log('Delete review with ID:', reviewId);
-    // Add your delete review logic here
+    const index = reviews.findIndex(review => review.id === reviewId);
+    if (index !== -1) {
+        const deletedReview = reviews.splice(index, 1);
+        console.log('Review deleted:', deletedReview);
+    } else {
+        console.error('Review not found with ID:', reviewId);
+    }
 }
 
 // Function to display reviews for the selected place
@@ -83,3 +100,4 @@ function displayReviewsForPlace(state, placeName) {
 function addReview(review) {
     reviews.push(review); // Add the review to the global reviews array
 }
+

@@ -28,6 +28,13 @@
             margin-top: 10px;
             text-align: center;
         }
+        /* Style for images */
+        #imagesSection img {
+            max-width: 100%; /* Ensure images don't exceed their container's width */
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
@@ -47,7 +54,7 @@
         </div>
     </header>
     <main>
-        <section id="teamMembers" class="container">
+		<section id="teamMembers" class="container">
             <h2 class="text-center mb-4">Our Team</h2>
             <div class="row">
                 <div class="col-md-3 team-member">
@@ -73,11 +80,24 @@
             </div>
         </section>
 
-        <footer class="bg-dark text-white py-3 mt-5">
-            <div class="container">
-                <p class="text-center">&copy; About Us</p>
+
+        <!-- Grid row for images -->
+        <section id="imagesSection" class="container mt-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <figure class="text-center">
+                        <img src="img/ERD.png" alt="Logical ERD">
+                        <figcaption>Logical ERD</figcaption>
+                    </figure>
+                </div>
+                <div class="col-md-6">
+                    <figure class="text-center">
+                        <img src="img/bar_chart.jpg" alt="Visualisation for States visited by Ratings">
+                        <figcaption>Visualisation for States visited by Ratings</figcaption>
+                    </figure>
+                </div>
             </div>
-        </footer>
+        </section>
     </main>
 </body>
 </html>

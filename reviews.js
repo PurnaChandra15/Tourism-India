@@ -101,3 +101,45 @@ function addReview(review) {
     reviews.push(review); // Add the review to the global reviews array
 }
 
+// Function to update the reviews list
+function updateReviewsList() {
+    const reviewsList = document.getElementById('reviews');
+    reviewsList.innerHTML = '';
+    reviews.forEach(function(review, index) {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `${review.userName} (${review.state}, ${review.place}): ${review.userReview} (${generateStarRating(review.starRating)} stars)`;
+
+        const editButton = document.createElement('button');
+        editButton.textContent = 'Edit';
+        editButton.classList.add('btn', 'btn-primary', 'mx-2');
+        editButton.addEventListener('click', function() {
+            const updatedName = prompt('Enter updated name:', review.userName);
+            const updatedReview = prompt('Enter updated review:', review.userReview);
+            const updatedRating = prompt('Enter updated rating (1-5):', review.starRating);
+
+            if (updatedName && updatedReview && updatedRating) {
+                reviews[index] = { userName: updatedName, state: review.state, place: review.place, userReview: updatedReview, starRating: updatedRating };
+                updateReviewsList();
+            }
+        });
+
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.classList.add('btn', 'btn-danger');
+        deleteButton.addEventListener('click', function() {
+            reviews.splice(index, 1);
+            updateReviewsList();
+        });
+
+        listItem.appendChild(editButton);
+        listItem.appendChild(deleteButton);
+        reviewsList.appendChild(listItem);
+    });
+}
+
+// Function to dynamically generate star symbols based on rating value
+function generateStarRating(rating) {
+    const filledStars = "★".repeat(rating);
+    const emptyStars = "☆".repeat(5 - rating);
+    return filledStars + emptyStars;
+}

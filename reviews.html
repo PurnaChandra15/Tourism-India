@@ -7,22 +7,33 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
     <style>
-
         .transparent-black {
-            background-color: rgba(0, 0, 0, 0.7); /* Adjust transparency here */
-            color: white; /* Text color */
-            padding: 20px; /* Add padding for spacing */
-            height: 100vh; /* Make blocks occupy full height of viewport */
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 20px;
+            height: 100vh;
         }
         .card {
-            background-color: transparent; /* Remove card background color */
-            border: none; /* Remove card border */
+            background-color: transparent;
+            border: none;
         }
         .form-group {
-            margin-bottom: 20px; /* Increase margin between form elements */
+            margin-bottom: 20px;
         }
         .form-control {
-            width: 100%; /* Make input fields occupy full width */
+            width: 100%;
+        }
+        #userReview {
+            resize: vertical;
+            min-height: 150px;
+        }
+        body {
+            background-color: beige;
+        }
+        .review-block {
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -45,63 +56,67 @@
 
     <main>
         <div class="container-fluid">
-            <div class="row no-gutters">
-                <!-- Left block for adding review -->
-                <div class="col-md-6 transparent-black" style="padding-right: 1px;"> <!-- Increase padding on the right -->
-                    <section id="addReviewForm">
-                        <div class="card">
-                            <h2 class="text-center mb-4">Add a Review</h2>
-                            <form id="addReviewForm">
-                                <div class="form-group">
-                                    <label for="userName">Name:</label>
-                                    <input type="text" id="userName" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="stateSelect">State:</label>
-                                    <select id="stateSelect" class="form-control" required>
-                                        <option value="">Select State</option>
-                                        <!-- States will be dynamically added here -->
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="placeSelect">Famous Place:</label>
-                                    <select id="placeSelect" class="form-control" required>
-                                        <option value="">Select Famous Place</option>
-                                        <!-- Places will be dynamically added here based on the selected state -->
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="userReview">Review:</label>
-                                    <textarea id="userReview" class="form-control" rows="6" required></textarea> <!-- Increase rows -->
-                                </div>
-                                <div class="form-group">
-                                    <label for="starRating">Rating:</label>
-                                    <select id="starRating" class="form-control" required>
-                                        <option value="">Select Rating</option>
-                                        <option value="1">1 star</option>
-                                        <option value="2">2 stars</option>
-                                        <option value="3">3 stars</option>
-                                        <option value="4">4 stars</option>
-                                        <option value="5">5 stars</option>
-                                    </select>
-                                </div>
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary">Submit Review</button>
-                                </div>
-                            </form>
+            <section id="addReviewForm">
+                <div class="card p-4 transparent-black">
+                    <h2 class="text-center mb-4" style="background-color: rgba(0, 0, 0, 0.4); color: #f2f2f2;">Add a Review</h2>
+                    <form id="addReviewForm">
+                        <div class="form-group">
+                            <label for="userName" style="color: #000;">Name:</label>
+                            <input type="text" id="userName" class="form-control" required>
                         </div>
-                    </section>
-                </div>
-                <!-- Right block for displaying reviews -->
-                <div class="col-md-6 transparent-black">
-                    <section id="reviewList">
-                        <div class="card">
-                            <h2 class="text-center mb-4">Reviews</h2>
-                            <ul id="reviews"></ul>
+                        <div class="form-group">
+                            <label for="stateSelect" style="color: #000;">State:</label>
+                            <select id="stateSelect" class="form-control" required>
+                                <option value="">Select State</option>
+                            </select>
                         </div>
-                    </section>
+                        <div class="form-group">
+                            <label for="placeSelect" style="color: #000;">Famous Place:</label>
+                            <select id="placeSelect" class="form-control" required>
+                                <option value="">Select Famous Place</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="userReview" style="color: #000;">Review:</label>
+                            <textarea id="userReview" class="form-control" rows="6" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="starRating" style="color: #000;">Rating:</label>
+                            <select id="starRating" class="form-control" required>
+                                <option value="">Select Rating</option>
+                                <option value="1">★☆☆☆☆</option>
+                                <option value="2">★★☆☆☆</option>
+                                <option value="3">★★★☆☆</option>
+                                <option value="4">★★★★☆</option>
+                                <option value="5">★★★★★</option>
+                            </select>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Submit Review</button>
+                        </div>
+                    </form>
                 </div>
-            </div>
+            </section>
+
+            <section id="reviewList">
+                <div class="card p-4 transparent-black mt-5">
+                    <h2 class="text-center mb-4" style="background-color: rgba(0, 0, 0, 0.4); color: #f2f2f2;">Reviews</h2>
+                    <div class="review-block">
+                        <ul id="reviews" class="list-unstyled" style="color: black;">
+                            <!-- Individual reviews will be added dynamically here -->
+                            <li class="mb-3">
+                                <span>User Name (State, Place): Review (<span class="star-rating"></span>)</span>
+                                <div class="d-flex justify-content-between align-items-center"> <!-- Added align-items-center for vertical alignment -->
+                                    <div>
+                                        <button type="button" class="btn btn-primary mr-2">Edit</button> <!-- Added margin-right -->
+                                        <button type="button" class="btn btn-danger">Delete</button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
 
@@ -159,7 +174,7 @@
                 reviewsList.innerHTML = '';
                 reviews.forEach(function(review, index) {
                     const listItem = document.createElement('li');
-                    listItem.textContent = `${review.userName} (${review.state}, ${review.place}): ${review.userReview} (${review.starRating} stars)`;
+                    listItem.innerHTML = `${review.userName} (${review.state}, ${review.place}): ${review.userReview} (${generateStarRating(review.starRating)})`;
 
                     const editButton = document.createElement('button');
                     editButton.textContent = 'Edit';
@@ -187,6 +202,13 @@
                     listItem.appendChild(deleteButton);
                     reviewsList.appendChild(listItem);
                 });
+            }
+
+            // Function to dynamically generate star symbols based on rating value
+            function generateStarRating(rating) {
+                const filledStars = "★".repeat(rating);
+                const emptyStars = "☆".repeat(5 - rating);
+                return filledStars + emptyStars;
             }
         });
     </script>
